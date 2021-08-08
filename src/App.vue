@@ -1,26 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+ <div class="wrap">
+   <div class="post"><b>Title: </b>Post about JavaScript</div>
+   <div class="post"><b>Title: </b>Post about React</div>
+<div class="post"><b>Title: </b>Post about Vue</div>
+
+ </div>
+  
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+ data(){
+   return{}
+ }
 }
 </script>
 
-<style>
+<style >
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ width: 400px;
+ text-align: center;
+margin: 0 auto;
+}
+.post{
+  margin-bottom: 10px;
+  color: rgb(50, 49, 51);
+  padding: 10px;
+  border: 2px solid rgba(133, 126, 126, 0.007);
+  border-radius:6px;
+  box-shadow: 4px 4px 10px #cecece;
+  
+
+}
+.post:hover{
+  transform: scale(1.03);
+  font-size: 18px;
+  box-shadow: 4px 4px 10px #3f3434;
+
 }
 </style>
