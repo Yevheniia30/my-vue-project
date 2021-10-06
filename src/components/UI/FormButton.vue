@@ -5,12 +5,11 @@
 </template>
 <script>
 export default {
-  name: "form-button"
+  name: 'form-button',
 };
 </script>
 <style scoped>
 .btn {
-  align-self: flex-end;
   background-color: #cecece;
   border-radius: 4px;
   padding: 5px 10px;

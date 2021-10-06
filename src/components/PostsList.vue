@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3>Список пользователей</h3>
+  <div v-if="posts.length > 0">
+    <h3>Posts list</h3>
     <post-item
       v-for="post in posts"
       :key="post.id"
@@ -8,6 +8,7 @@
       @remove="$emit('remove', post)"
     />
   </div>
+  <h2 v-else>You haven't created any posts yet</h2>
 </template>
 
 <script>

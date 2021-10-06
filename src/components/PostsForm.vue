@@ -49,6 +49,8 @@ textarea {
 
 .form {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   margin-bottom: 20px;
 }

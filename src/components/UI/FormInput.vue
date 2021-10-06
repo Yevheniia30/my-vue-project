@@ -3,20 +3,20 @@
 </template>
 <script>
 export default {
-  name: "form-input",
+  name: 'form-input',
   props: {
-    modelValue: [String, Number]
+    modelValue: [String, Number],
   },
   methods: {
     updateInput(e) {
-      this.$emit("update:modelValue", e.target.value);
-    }
-  }
+      this.$emit('update:modelValue', e.target.value);
+    },
+  },
 };
 </script>
 <style>
 .input {
-  width: 100%;
+  width: 80%;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 6px;
