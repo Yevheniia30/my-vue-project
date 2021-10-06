@@ -1,50 +1,46 @@
 <template>
-  <div class="wrap">
-    <div class="post"><b>Title: </b>Posts about JavaScript</div>
-    <div class="post"><b>Title: </b>Posts about React</div>
-    <div class="post"><b>Title: </b>Posts about Vue</div>
+  <div class="app">
+    <posts-form @create="createPost" />
+    <posts-list :posts="posts" @remove="deletePost" />
   </div>
 </template>
 
 <script>
+import PostsForm from '@/components/PostsForm';
+import PostsList from '@/components/PostsList';
 export default {
+  components: {
+    PostsList,
+    PostsForm,
+  },
   data() {
     return {
-      likes: 0,
-      dislikes: 5
+      posts: [
+        { id: 1, title: 'JavaScript', body: 'Description of JS' },
+        { id: 2, title: 'React', body: 'Description of React' },
+        { id: 3, title: 'Vue', body: 'Description of Vue' },
+      ],
     };
   },
   methods: {
-    addLikes() {
-      this.likes += 1;
+    createPost(post) {
+      if (post.title) {
+        this.posts.push(post);
+      }
     },
-    addDislikes() {
-      this.dislikes += 1;
-    }
-  }
+    deletePost(post) {
+      this.posts = this.posts.filter(p => p.id !== post.id);
+    },
+  },
 };
 </script>
 
 <style>
-#app {
+.app {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   width: 400px;
-  text-align: center;
   margin: 0 auto;
-}
-.post {
-  margin-bottom: 10px;
-  color: rgb(50, 49, 51);
-  padding: 10px;
-  border: 2px solid rgba(133, 126, 126, 0.007);
-  border-radius: 6px;
-  box-shadow: 4px 4px 10px #cecece;
-}
-.post:hover {
-  transform: scale(1.03);
-  font-size: 18px;
-  box-shadow: 4px 4px 10px #3f3434;
 }
 </style>
