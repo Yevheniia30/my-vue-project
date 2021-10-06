@@ -4,13 +4,15 @@
     <form-modal v-model:show="modalVisible">
       <posts-form @create="createPost" />
     </form-modal>
-    <posts-list :posts="posts" @remove="deletePost" />
+    <posts-list :posts="posts" @remove="deletePost" v-if="!isLoading" />
+    <p v-else>Loading...</p>
   </div>
 </template>
 
 <script>
 import PostsForm from '@/components/PostsForm';
 import PostsList from '@/components/PostsList';
+import axios from 'axios';
 // import FormModal from './components/UI/FormModal.vue';
 export default {
   components: {
@@ -20,12 +22,9 @@ export default {
   },
   data() {
     return {
-      posts: [
-        { id: 1, title: 'JavaScript', body: 'Description of JS' },
-        { id: 2, title: 'React', body: 'Description of React' },
-        { id: 3, title: 'Vue', body: 'Description of Vue' },
-      ],
+      posts: [],
       modalVisible: false,
+      isLoading: false,
     };
   },
   methods: {
@@ -41,6 +40,23 @@ export default {
     showModal() {
       this.modalVisible = true;
     },
+    async fetchPosts() {
+      this.isLoading = true;
+      try {
+        const response = await axios.get(
+          'https://jsonplaceholder.typicode.com/posts?_limit=10',
+        );
+        console.log(response);
+        this.posts = response.data;
+      } catch (err) {
+        alert('Error!');
+      } finally {
+        this.isLoading = false;
+      }
+    },
+  },
+  mounted() {
+    this.fetchPosts();
   },
 };
 </script>
